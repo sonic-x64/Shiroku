@@ -840,19 +840,13 @@ do
 			HolderOutline.Position = UDim2.new(0, 6, 0, 22)
 			HolderOutline.Size = UDim2.new(1, -12, 1, -28)
 
-			local HolderInline = Instance.new("ScrollingFrame")
+			local HolderInline = Instance.new("Frame")
 			HolderInline.Name = "HolderInline"
 			HolderInline.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-            HolderInline.Active = true
 			HolderInline.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			HolderInline.BorderSizePixel = 0
 			HolderInline.Position = UDim2.new(0, 2, 0, 2)
 			HolderInline.Size = UDim2.new(1, -4, 1, -4)
-            HolderInline.BorderSizePixel = 0
-            HolderInline.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            HolderInline.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
-            HolderInline.AutomaticCanvasSize = Enum.AutomaticSize.Y
-            HolderInline.ScrollBarThickness = 0
 
 			local holderinlinegradientuwu = Instance.new("ImageLabel")
 			holderinlinegradientuwu.Name = "ImageLabel"
