@@ -825,6 +825,16 @@ do
 			Outline.Text = ""
 			Outline.AutoButtonColor = false
 
+            game:GetService("UserInputService").InputBegan:Connect(function(input)
+                if input.KeyCode == getgenv().UiKeybind then
+                    if Outline.Visible then
+                        Outline.Visible = false
+                    else
+                        Outline.Visible = true
+                    end
+                end
+            end)
+
 			local Inline = Instance.new("Frame")
 			Inline.Name = "Inline"
 			Inline.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
