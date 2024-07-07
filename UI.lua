@@ -1222,7 +1222,7 @@ do
 
 			Frame.Parent = NewPage
 
-			local RealPage = Instance.new("Frame")
+			local RealPage = Instance.new("ScrollingFrame")
 			RealPage.Name = "RealPage"
 			RealPage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			RealPage.BackgroundTransparency = 1
@@ -1233,7 +1233,7 @@ do
 			RealPage.Parent = Page.Window.Elements.Holder
 			RealPage.Visible = false
 
-			local Left = Instance.new("Frame")
+			local Left = Instance.new("ScrollingFrame")
 			Left.Name = "Left"
 			Left.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Left.BackgroundTransparency = 1
@@ -1250,7 +1250,7 @@ do
 
 			Left.Parent = RealPage
 
-			local Right = Instance.new("Frame")
+			local Right = Instance.new("ScrollingFrame")
 			Right.Name = "Right"
 			Right.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Right.BackgroundTransparency = 1
