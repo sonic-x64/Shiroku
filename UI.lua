@@ -1336,7 +1336,7 @@ do
 				Sections = {},
 			}
 			--
-			local SectionOutline = Instance.new("Frame")
+			local SectionOutline = Instance.new("ScrollingFrame")
 			SectionOutline.Name = "SectionOutline"
 			SectionOutline.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 			SectionOutline.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1363,7 +1363,7 @@ do
 			sectiongradient.Size = UDim2.new(1, -2, 1, -2)
 			sectiongradient.Parent = SectionInline
 
-			local Accent = Library:NewInstance("Frame", true)
+			local Accent = Library:NewInstance("ScrollingFrame", true)
 			Accent.Name = "Accent"
 			Accent.BackgroundColor3 = Library.Accent
 			Accent.BorderColor3 = Color3.fromRGB(20, 20, 20)
@@ -1380,7 +1380,7 @@ do
 			UIGradient.Rotation = 90
 			UIGradient.Parent = Accent
 
-			local BlackLine = Instance.new("Frame")
+			local BlackLine = Instance.new("ScrollingFrame")
 			BlackLine.Name = "BlackLine"
 			BlackLine.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 			BlackLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
