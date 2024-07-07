@@ -26,8 +26,6 @@ end;
 
 local realfont = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
 
-getgenv().UiKeybind = Enum.KeyCode.RightShift
-
 local Library = {};
 do
 	Library = {
@@ -827,16 +825,6 @@ do
 			Outline.Text = ""
 			Outline.AutoButtonColor = false
 
-			game:GetService("UserInputService").InputBegan:Connect(function(input)
-				if input.KeyCode == getgenv().UiKeybind then
-					if Outline.Visible then
-						Outline.Visible = false
-					else
-						Outline.Visible = true
-					end
-				end
-			end)
-
 			local Inline = Instance.new("Frame")
 			Inline.Name = "Inline"
 			Inline.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
@@ -859,16 +847,6 @@ do
 			HolderInline.BorderSizePixel = 0
 			HolderInline.Position = UDim2.new(0, 2, 0, 2)
 			HolderInline.Size = UDim2.new(1, -4, 1, -4)
-
-			local holderinlinegradientuwu = Instance.new("ImageLabel")
-			holderinlinegradientuwu.Name = "ImageLabel"
-			holderinlinegradientuwu.Image = "rbxassetid://18321983559"
-            holderinlinegradientuwu.BackgroundTransparency = 1
-			holderinlinegradientuwu.BackgroundColor3 = Color3.fromRGB(21,21,21)
-			holderinlinegradientuwu.BorderColor3 = Color3.fromRGB(0,0,0)
-			holderinlinegradientuwu.Position = UDim2.new(0, 2, 0, 2)
-			holderinlinegradientuwu.Size = UDim2.new(1, -4, 1, -4)
-			holderinlinegradientuwu.Parent = HolderInline
 
 			local Accent = Library:NewInstance("Frame", true)
 			Accent.Name = "Accent"
@@ -1353,16 +1331,6 @@ do
 			SectionInline.Position = UDim2.new(0, 1, 0, 1)
 			SectionInline.Size = UDim2.new(1, -2, 1, -2)
 
-            local sectiongradient = Instance.new("ImageLabel")
-			sectiongradient.Name = "ImageLabel"
-			sectiongradient.Image = "rbxassetid://18321983559"
-            sectiongradient.BackgroundTransparency = 1
-			sectiongradient.BackgroundColor3 = Color3.fromRGB(35,35,35)
-			sectiongradient.BorderColor3 = Color3.fromRGB(0,0,0)
-			sectiongradient.Position = UDim2.new(0, 1, 0, 1)
-			sectiongradient.Size = UDim2.new(1, -2, 1, -2)
-			sectiongradient.Parent = SectionInline
-
 			local Accent = Library:NewInstance("Frame", true)
 			Accent.Name = "Accent"
 			Accent.BackgroundColor3 = Library.Accent
@@ -1465,6 +1433,7 @@ do
 			SectionOutline.Size = UDim2.new(1, 0, 0, Section.Size)
 			SectionOutline.ZIndex = Section.Zindex
 
+
 			local SectionInline = Instance.new("Frame")
 			SectionInline.Name = "SectionInline"
 			SectionInline.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
@@ -1472,16 +1441,6 @@ do
 			SectionInline.BorderSizePixel = 0
 			SectionInline.Position = UDim2.new(0, 1, 0, 1)
 			SectionInline.Size = UDim2.new(1, -2, 1, -2)
-
-            local multisect = Instance.new("ImageLabel")
-			multisect.Name = "ImageLabel"
-			multisect.Image = "rbxassetid://18321983559"
-            multisect.BackgroundTransparency = 1
-			multisect.BackgroundColor3 = Color3.fromRGB(21,21,21)
-			multisect.BorderColor3 = Color3.fromRGB(0,0,0)
-			multisect.Position = UDim2.new(0, 1, 0, 1)
-			multisect.Size = UDim2.new(1, -2, 1, -2)
-			multisect.Parent = SectionInline
 
 			local Accent = Library:NewInstance("Frame", true)
 			Accent.Name = "Accent"
@@ -1540,16 +1499,6 @@ do
 			FadeThing.Parent = SectionInline
 			FadeThing.Visible = false
 			FadeThing.ZIndex = 100
-
-            local fadesect = Instance.new("ImageLabel")
-			fadesect.Name = "ImageLabel"
-			fadesect.Image = "rbxassetid://18321983559"
-            fadesect.BackgroundTransparency = 0
-			fadesect.BackgroundColor3 = Color3.fromRGB(45,45,45)
-			fadesect.BorderColor3 = Color3.fromRGB(0,0,0)
-			fadesect.Position = UDim2.new(0, 10, 0, 29)
-			fadesect.Size = UDim2.new(1, -20, 1, -35)
-			fadesect.Parent = FadeThing
 
 			-- // Elements
 			Section.Elements = {
@@ -1659,6 +1608,12 @@ do
 					Frame.BorderSizePixel = MultiSection.Open and 0 or 1
 					--
 					task.spawn(function()
+						FadeThing.Visible = true
+						TweenService:Create(FadeThing, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+						task.wait(0.1)
+						SectionContent.Visible = MultiSection.Open
+						TweenService:Create(FadeThing, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+						task.wait(0.1)
 						FadeThing.Visible = false
 					end)
 					--
@@ -1770,7 +1725,6 @@ do
 			})
 			DisabledGradient.Rotation = 90
 			DisabledGradient.Parent = ToggleFrame
-            
 
 			local UIStroke = Instance.new("UIStroke")
 			UIStroke.Name = "UIStroke"
@@ -4093,6 +4047,32 @@ do
 		end
 	end;
 end;
+
+local title = "Sonic bbot Docs!!!!1!111!"
+
+local window = Library:Window({Name = title})
+local legittab = window:Page({Name = "Legit"})
+local ragetab = window:Page({Name = "Rage"})
+local visualstab = window:Page({Name = "Visuals"})
+local playerstab = window:Page({Name = "Players"})
+local settingstab = window:Page({Name = "Settings"})
+
+local aimbotsection = legittab:Section({Name = "Aimbot", Side = "left"})
+local silentaimsection = legittab:Section({Name = "Silent Aim", Side = "Right"})
+local settingssection = settingstab:Section({Name = "UI", Side = "Right"})
+local configsection = settingstab:Section({Name = "Config", Side = "Left"})
+
+aimbotsection:Toggle({Name = "Enabled", Callback = function(v) print(v) end})
+aimbotsection:Slider({Name = "Prediction", Min = 0, Max = 5, Def = 1, Decimals = 0.1, Suf = "cf", Flag = "Tecsafst", Callback = function(v) print(v) end})
+
+playerstab:PlayerList()
+local keylist = window:KeyList()
+
+settingssection:Colorpicker({Name = "Accent Color", Flag = "accentcolorxxdxdxdxdxd", Def = Library.Accent, Callback = function(v) Library:ChangeAccent(v) end})
+settingssection:Textbox({Name = "Custom cheat name", Flag = "ui_name", Def = "Sonic bbot Docs!!!!1!111!", Callback = function(v) window:UpdateTitle(v) end})
+settingssection:Toggle({Name = "Keybind List", Callback = function(v) keylist:SetVisible(v) end})
+
+Library:Notification("Hot bbot notification", 5, Color3.fromRGB(244, 244, 244))
 
 
 return Library
