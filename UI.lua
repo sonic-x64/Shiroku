@@ -4068,31 +4068,4 @@ do
 	end;
 end;
 
-local title = "Sonic bbot Docs!!!!1!111!"
-
-local window = Library:Window({Name = title})
-local legittab = window:Page({Name = "Legit"})
-local ragetab = window:Page({Name = "Rage"})
-local visualstab = window:Page({Name = "Visuals"})
-local playerstab = window:Page({Name = "Players"})
-local settingstab = window:Page({Name = "Settings"})
-
-local aimbotsection = legittab:Section({Name = "Aimbot", Side = "left"})
-local silentaimsection = legittab:Section({Name = "Silent Aim", Side = "Right"})
-local settingssection = settingstab:Section({Name = "UI", Side = "Right"})
-local configsection = settingstab:Section({Name = "Config", Side = "Left"})
-
-aimbotsection:Toggle({Name = "Enabled", Callback = function(v) print(v) end})
-aimbotsection:Slider({Name = "Prediction", Min = 0, Max = 5, Def = 1, Decimals = 0.1, Suf = "cf", Flag = "Tecsafst", Callback = function(v) print(v) end})
-
-playerstab:PlayerList()
-local keylist = window:KeyList()
-
-settingssection:Colorpicker({Name = "Accent Color", Flag = "accentcolorxxdxdxdxdxd", Def = Library.Accent, Callback = function(v) Library:ChangeAccent(v) end})
-settingssection:Textbox({Name = "Custom cheat name", Flag = "ui_name", Def = "Sonic bbot Docs!!!!1!111!", Callback = function(v) window:UpdateTitle(v) end})
-settingssection:Toggle({Name = "Keybind List", Callback = function(v) keylist:SetVisible(v) end})
-
-Library:Notification("Hot bbot notification", 5, Color3.fromRGB(244, 244, 244))
-
-
 return Library
