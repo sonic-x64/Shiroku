@@ -1122,13 +1122,13 @@ do
 					KeyList.Visible = State;
 				end;
 				--
-				function NKeyList:NewKey(Name,Page)
+				function NKeyList:NewKey(Name,Page,State)
 					local KeyValue = {}
 					--
 					local NewKey = Instance.new("TextLabel")
 					NewKey.Name = "NewKey"
 					NewKey.FontFace = realfont
-					NewKey.Text = Page .. ": " .. Name
+					NewKey.Text = Name .. " | " .. tostring(State)
 					NewKey.TextColor3 = Color3.fromRGB(255, 255, 255)
 					NewKey.TextSize = Library.FSize
 					NewKey.TextStrokeTransparency = 0
@@ -1141,11 +1141,15 @@ do
 					NewKey.Position = UDim2.new(0, 4, 0, 0)
 					NewKey.Size = UDim2.new(0, 100, 0, 20)
 					NewKey.Parent = Content
-					NewKey.Visible = false
+					NewKey.Visible = true
 					--
 					function KeyValue:SetVisible(State)
 						NewKey.Visible = State;
 					end;
+                    function KeyValue:Update(NewName, newstate)
+						NewKey.Text = NewName .. " | " .. tostring(newstate)
+					end;
+
 					return KeyValue
 				end;
 				return NKeyList
@@ -1916,7 +1920,7 @@ do
 				local Always = Instance.new("TextButton")
 				local ListValue;
 				if not Keybind.Ignore then
-					ListValue = Library.KeyList:NewKey(Keybind.Name, Keybind.Page.Name)
+					ListValue = Library.KeyList:NewKey(Keybind.Name, Keybind.Page.Name, Keybind.State)
 				end
 				--
 				local KeyFrame = Instance.new("TextButton")
@@ -2045,6 +2049,7 @@ do
 							local text = "None"
 
 							Value.Text = text
+                            ListValue:Update(Keybind.Name, text)
 						elseif newkey ~= nil then
 							Key = newkey
 							if Keybind.UseKey then
@@ -2056,6 +2061,7 @@ do
 							local text = (Library.Keys[newkey] or tostring(newkey):gsub("Enum.KeyCode.", ""))
 
 							Value.Text = text
+                            ListValue:Update(Keybind.Name, text)
 						end
 
 						Library.Flags[Keybind.Flag .. "_KEY"] = newkey
@@ -2865,9 +2871,7 @@ do
 			local Toggle = Instance.new("TextButton")
 			local Always = Instance.new("TextButton")
 			local ListValue;
-			if not Keybind.Ignore then
-				ListValue = Library.KeyList:NewKey(Keybind.Name, Keybind.Page.Name)
-			end
+			ListValue = Library.KeyList:NewKey(Keybind.Name, Keybind.Page.Name, Keybind.State)
 			--
 			local NewKey = Instance.new("Frame")
 			NewKey.Name = "NewKey"
@@ -3019,6 +3023,7 @@ do
 						local text = "None"
 
 						Value.Text = text
+                        ListValue:Update(Keybind.Name, text)
 					elseif newkey ~= nil then
 						Key = newkey
 						if Keybind.UseKey then
@@ -3030,6 +3035,7 @@ do
 						local text = (Library.Keys[newkey] or tostring(newkey):gsub("Enum.KeyCode.", ""))
 
 						Value.Text = text
+                        ListValue:Update(Keybind.Name, text)
 					end
 
 					Library.Flags[Keybind.Flag .. "_KEY"] = newkey
