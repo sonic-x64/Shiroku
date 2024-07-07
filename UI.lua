@@ -848,6 +848,16 @@ do
 			HolderInline.Position = UDim2.new(0, 2, 0, 2)
 			HolderInline.Size = UDim2.new(1, -4, 1, -4)
 
+			local holderinlinegradientuwu = Instance.new("ImageLabel")
+			holderinlinegradientuwu.Name = "ImageLabel"
+			holderinlinegradientuwu.Image = "rbxassetid://18321983559"
+            holderinlinegradientuwu.BackgroundTransparency = 1
+			holderinlinegradientuwu.BackgroundColor3 = Color3.fromRGB(21,21,21)
+			holderinlinegradientuwu.BorderColor3 = Color3.fromRGB(0,0,0)
+			holderinlinegradientuwu.Position = UDim2.new(0, 2, 0, 2)
+			holderinlinegradientuwu.Size = UDim2.new(1, -4, 1, -4)
+			holderinlinegradientuwu.Parent = HolderInline
+
 			local Accent = Library:NewInstance("Frame", true)
 			Accent.Name = "Accent"
 			Accent.BackgroundColor3 = Library.Accent
@@ -1330,6 +1340,16 @@ do
 			SectionInline.BorderSizePixel = 0
 			SectionInline.Position = UDim2.new(0, 1, 0, 1)
 			SectionInline.Size = UDim2.new(1, -2, 1, -2)
+
+            local sectiongradient = Instance.new("ImageLabel")
+			sectiongradient.Name = "ImageLabel"
+			sectiongradient.Image = "rbxassetid://18321983559"
+            sectiongradient.BackgroundTransparency = 1
+			sectiongradient.BackgroundColor3 = Color3.fromRGB(35,35,35)
+			sectiongradient.BorderColor3 = Color3.fromRGB(0,0,0)
+			sectiongradient.Position = UDim2.new(0, 1, 0, 1)
+			sectiongradient.Size = UDim2.new(1, -2, 1, -2)
+			sectiongradient.Parent = SectionInline
 
 			local Accent = Library:NewInstance("Frame", true)
 			Accent.Name = "Accent"
