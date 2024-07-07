@@ -1187,7 +1187,7 @@ do
 			NewPage.Size = UDim2.new(0.2, 0, 1, 0)
 			NewPage.Parent = Page.Window.Elements.TabHolder
 
-			local Frame = Instance.new("ScrollingFrame")
+			local Frame = Instance.new("Frame")
 			Frame.Name = "Frame"
 			Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 			Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1222,7 +1222,7 @@ do
 
 			Frame.Parent = NewPage
 
-			local RealPage = Instance.new("ScrollingFrame")
+			local RealPage = Instance.new("Frame")
 			RealPage.Name = "RealPage"
 			RealPage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			RealPage.BackgroundTransparency = 1
@@ -1233,7 +1233,7 @@ do
 			RealPage.Parent = Page.Window.Elements.Holder
 			RealPage.Visible = false
 
-			local Left = Instance.new("ScrollingFrame")
+			local Left = Instance.new("Frame")
 			Left.Name = "Left"
 			Left.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Left.BackgroundTransparency = 1
@@ -1250,7 +1250,7 @@ do
 
 			Left.Parent = RealPage
 
-			local Right = Instance.new("ScrollingFrame")
+			local Right = Instance.new("Frame")
 			Right.Name = "Right"
 			Right.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Right.BackgroundTransparency = 1
@@ -1336,7 +1336,7 @@ do
 				Sections = {},
 			}
 			--
-			local SectionOutline = Instance.new("ScrollingFrame")
+			local SectionOutline = Instance.new("Frame")
 			SectionOutline.Name = "SectionOutline"
 			SectionOutline.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 			SectionOutline.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1345,7 +1345,7 @@ do
 			SectionOutline.ZIndex = Section.Zindex
 			SectionOutline.Parent = Section.Side == "left" and Section.Page.Elements.Left or Section.Side == "right" and Section.Page.Elements.Right
 
-			local SectionInline = Instance.new("ScrollingFrame")
+			local SectionInline = Instance.new("Frame")
 			SectionInline.Name = "SectionInline"
 			SectionInline.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 			SectionInline.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1363,7 +1363,7 @@ do
 			sectiongradient.Size = UDim2.new(1, -2, 1, -2)
 			sectiongradient.Parent = SectionInline
 
-			local Accent = Library:NewInstance("ScrollingFrame", true)
+			local Accent = Library:NewInstance("Frame", true)
 			Accent.Name = "Accent"
 			Accent.BackgroundColor3 = Library.Accent
 			Accent.BorderColor3 = Color3.fromRGB(20, 20, 20)
@@ -1380,7 +1380,7 @@ do
 			UIGradient.Rotation = 90
 			UIGradient.Parent = Accent
 
-			local BlackLine = Instance.new("ScrollingFrame")
+			local BlackLine = Instance.new("Frame")
 			BlackLine.Name = "BlackLine"
 			BlackLine.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 			BlackLine.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1407,7 +1407,7 @@ do
 			Title.Size = UDim2.new(1, 0, 0, 16)
 			Title.Parent = SectionInline
 
-			local SectionContent = Instance.new("ScrollingFrame")
+			local SectionContent = Instance.new("Frame")
 			SectionContent.Name = "SectionContent"
 			SectionContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			SectionContent.BackgroundTransparency = 1
@@ -1426,6 +1426,20 @@ do
 			UIListLayout.Padding = UDim.new(0, 10)
 			UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 			UIListLayout.Parent = SectionContent
+
+            local LeftSection = Instance.new("ScrollingFrame")
+            LeftSection.Name = "LeftSection"
+            LeftSection.Parent = SectionContent
+            LeftSection.Active = true
+            LeftSection.Size = UDim2.new(0.5, 0, 0.808061421, 100)
+            LeftSection.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            LeftSection.BackgroundTransparency = 1
+            LeftSection.Position = UDim2.new(0, 0, 5.85750044e-08, 0)
+            LeftSection.BorderSizePixel = 0
+            LeftSection.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            LeftSection.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+            LeftSection.AutomaticCanvasSize = Enum.AutomaticSize.Y
+            LeftSection.ScrollBarThickness = 0
 
 			SectionContent.Parent = SectionInline
 
