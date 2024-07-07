@@ -1353,16 +1353,6 @@ do
 			SectionInline.Position = UDim2.new(0, 1, 0, 1)
 			SectionInline.Size = UDim2.new(1, -2, 1, -2)
 
-            local sectiongradient = Instance.new("ImageLabel")
-			sectiongradient.Name = "ImageLabel"
-			sectiongradient.Image = "rbxassetid://18321983559"
-            sectiongradient.BackgroundTransparency = 1
-			sectiongradient.BackgroundColor3 = Color3.fromRGB(35,35,35)
-			sectiongradient.BorderColor3 = Color3.fromRGB(0,0,0)
-			sectiongradient.Position = UDim2.new(0, 1, 0, 1)
-			sectiongradient.Size = UDim2.new(1, -2, 1, -2)
-			sectiongradient.Parent = SectionInline
-
 			local Accent = Library:NewInstance("Frame", true)
 			Accent.Name = "Accent"
 			Accent.BackgroundColor3 = Library.Accent
