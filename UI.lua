@@ -1431,10 +1431,10 @@ do
             LeftSection.Name = "LeftSection"
             LeftSection.Parent = SectionContent
             LeftSection.Active = true
-            LeftSection.Size = UDim2.new(0.5, 0, 0.808061421, 100)
+            LeftSection.Size = UDim2.new(1, -20, 1, -30)
             LeftSection.BorderColor3 = Color3.fromRGB(0, 0, 0)
             LeftSection.BackgroundTransparency = 1
-            LeftSection.Position = UDim2.new(0, 0, 5.85750044e-08, 0)
+            LeftSection.Position = UDim2.new(0, 10, 0, 24)
             LeftSection.BorderSizePixel = 0
             LeftSection.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             LeftSection.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
