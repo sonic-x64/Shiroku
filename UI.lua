@@ -3583,6 +3583,16 @@ do
 			Frame.Position = UDim2.new(0, 1, 0, 1)
 			Frame.Size = UDim2.new(1, -2, 1, -2)
 
+            local uigradientforframe = Instance.new("ImageLabel")
+			uigradientforframe.Name = "ImageLabel"
+			uigradientforframe.Image = "rbxassetid://18321983559"
+            uigradientforframe.BackgroundTransparency = 1
+			uigradientforframe.BackgroundColor3 = Color3.fromRGB(21,21,21)
+			uigradientforframe.BorderColor3 = Color3.fromRGB(0,0,0)
+			uigradientforframe.Position = UDim2.new(0, 1, 0, 1)
+			uigradientforframe.Size = UDim2.new(1, -2, 1, -2)
+			uigradientforframe.Parent = Frame
+
 			local List = Library:NewInstance("ScrollingFrame", true)
 			List.Name = "List"
 			List.AutomaticCanvasSize = Enum.AutomaticSize.Y
