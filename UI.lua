@@ -1417,6 +1417,16 @@ do
 			UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 			UIListLayout.Parent = SectionContent
 
+            local holderinlinegradientuwu = Instance.new("ImageLabel")
+			holderinlinegradientuwu.Name = "ImageLabel"
+			holderinlinegradientuwu.Image = "rbxassetid://18321983559"
+            holderinlinegradientuwu.BackgroundTransparency = 1
+			holderinlinegradientuwu.BackgroundColor3 = Color3.fromRGB(21,21,21)
+			holderinlinegradientuwu.BorderColor3 = Color3.fromRGB(0,0,0)
+			holderinlinegradientuwu.Position = UDim2.new(0, 2, 0, 2)
+			holderinlinegradientuwu.Size = UDim2.new(1, -4, 1, -4)
+			holderinlinegradientuwu.Parent = HolderInline
+
 			SectionContent.Parent = SectionInline
 
 			SectionInline.Parent = SectionOutline
