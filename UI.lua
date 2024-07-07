@@ -1122,7 +1122,7 @@ do
 					KeyList.Visible = State;
 				end;
 				--
-				function NKeyList:NewKey(Name,Page,State)
+				function NKeyList:NewKey(Name,Page,State,Mode)
 					local KeyValue = {}
 					--
 					local NewKey = Instance.new("TextLabel")
@@ -1146,8 +1146,8 @@ do
 					function KeyValue:SetVisible(State)
 						NewKey.Visible = State;
 					end;
-                    function KeyValue:Update(NewName, newstate)
-						NewKey.Text = NewName .. " | " .. tostring(newstate)
+                    function KeyValue:Update(NewName, newstate, newmode)
+						NewKey.Text = NewName
 					end;
 
 					return KeyValue
@@ -1960,16 +1960,15 @@ do
 
 				KeyFrame.Parent = NewToggle
 
-				ModeBox.Name = "ModeBox"
+                ModeBox.Name = "ModeBox"
 				ModeBox.Parent = KeyFrame
 				ModeBox.AnchorPoint = Vector2.new(0,0.5)
-				ModeBox.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-				ModeBox.BorderColor3 = Color3.fromRGB(0,0,0)
+				ModeBox.BackgroundColor3 = Color3.fromRGB(25,25,25)
+				ModeBox.BorderColor3 = Color3.fromRGB(50,50,50)
 				ModeBox.BorderSizePixel = 1
-				ModeBox.Size = UDim2.new(0, 55, 0, 60)
-				ModeBox.Position = UDim2.new(0,48,0.5,0)
+				ModeBox.Size = UDim2.new(0, 65, 0, 60)
+				ModeBox.Position = UDim2.new(0,40,0.5,0)
 				ModeBox.Visible = false
-				ModeBox.ZIndex = 2
 
 				local UIStroke1 = Instance.new("UIStroke")
 				UIStroke1.Name = "UIStroke"
@@ -2049,7 +2048,7 @@ do
 							local text = "None"
 
 							Value.Text = text
-                            ListValue:Update(Keybind.Name, text)
+                            ListValue:Update("["..text .."] " .. Keybind.Name .. "("..Keybind.Mode .. ")")
 						elseif newkey ~= nil then
 							Key = newkey
 							if Keybind.UseKey then
@@ -2061,7 +2060,7 @@ do
 							local text = (Library.Keys[newkey] or tostring(newkey):gsub("Enum.KeyCode.", ""))
 
 							Value.Text = text
-                            ListValue:Update(Keybind.Name, text)
+                            ListValue:Update("["..text .."] " .. Keybind.Name .. "("..Keybind.Mode .. ")")
 						end
 
 						Library.Flags[Keybind.Flag .. "_KEY"] = newkey
@@ -2934,16 +2933,15 @@ do
 			Title.Size = UDim2.new(1, 0, 1, 0)
 			Title.Parent = NewKey
 
-			ModeBox.Name = "ModeBox"
-			ModeBox.Parent = KeyFrame
-			ModeBox.AnchorPoint = Vector2.new(0,0.5)
-			ModeBox.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-			ModeBox.BorderColor3 = Color3.fromRGB(0,0,0)
-			ModeBox.BorderSizePixel = 1
-			ModeBox.Size = UDim2.new(0, 55, 0, 60)
-			ModeBox.Position = UDim2.new(0,48,0.5,0)
-			ModeBox.Visible = false
-			ModeBox.ZIndex = 2
+            ModeBox.Name = "ModeBox"
+            ModeBox.Parent = NewKey
+            ModeBox.AnchorPoint = Vector2.new(0,0.5)
+            ModeBox.BackgroundColor3 = Color3.fromRGB(25,25,25)
+            ModeBox.BorderColor3 = Color3.fromRGB(50,50,50)
+            ModeBox.BorderSizePixel = 1
+            ModeBox.Size = UDim2.new(0, 65, 0, 60)
+            ModeBox.Position = UDim2.new(0,40,0.5,0)
+            ModeBox.Visible = false
 
 			local UIStroke1 = Instance.new("UIStroke")
 			UIStroke1.Name = "UIStroke"
@@ -3023,7 +3021,7 @@ do
 						local text = "None"
 
 						Value.Text = text
-                        ListValue:Update(Keybind.Name, text)
+                        ListValue:Update("["..text .."] " .. Keybind.Name .. "("..Keybind.Mode .. ")")
 					elseif newkey ~= nil then
 						Key = newkey
 						if Keybind.UseKey then
@@ -3035,7 +3033,7 @@ do
 						local text = (Library.Keys[newkey] or tostring(newkey):gsub("Enum.KeyCode.", ""))
 
 						Value.Text = text
-                        ListValue:Update(Keybind.Name, text)
+                        ListValue:Update("["..text .."] " .. Keybind.Name .. " ("..Keybind.Mode .. ")")
 					end
 
 					Library.Flags[Keybind.Flag .. "_KEY"] = newkey
