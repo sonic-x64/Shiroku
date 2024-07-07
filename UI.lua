@@ -1345,7 +1345,7 @@ do
 			SectionOutline.ZIndex = Section.Zindex
 			SectionOutline.Parent = Section.Side == "left" and Section.Page.Elements.Left or Section.Side == "right" and Section.Page.Elements.Right
 
-			local SectionInline = Instance.new("Frame")
+			local SectionInline = Instance.new("ScrollingFrame")
 			SectionInline.Name = "SectionInline"
 			SectionInline.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 			SectionInline.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1407,7 +1407,7 @@ do
 			Title.Size = UDim2.new(1, 0, 0, 16)
 			Title.Parent = SectionInline
 
-			local SectionContent = Instance.new("Frame")
+			local SectionContent = Instance.new("ScrollingFrame")
 			SectionContent.Name = "SectionContent"
 			SectionContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			SectionContent.BackgroundTransparency = 1
