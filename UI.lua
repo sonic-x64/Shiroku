@@ -1345,18 +1345,13 @@ do
 			SectionOutline.ZIndex = Section.Zindex
 			SectionOutline.Parent = Section.Side == "left" and Section.Page.Elements.Left or Section.Side == "right" and Section.Page.Elements.Right
 
-			local SectionInline = Instance.new("ScrollingFrame")
-            SectionInline.Name = "SectionInline"
-            SectionInline.Active = true
-            SectionInline.Size = UDim2.new(1, -2, 1, -2)
-            SectionInline.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            SectionInline.BackgroundTransparency = 1
-            SectionInline.Position = UDim2.new(0, 1, 0, 1)
-            SectionInline.BorderSizePixel = 0
-            SectionInline.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            SectionInline.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
-            SectionInline.AutomaticCanvasSize = Enum.AutomaticSize.Y
-            SectionInline.ScrollBarThickness = 0
+			local SectionInline = Instance.new("Frame")
+			SectionInline.Name = "SectionInline"
+			SectionInline.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+			SectionInline.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			SectionInline.BorderSizePixel = 0
+			SectionInline.Position = UDim2.new(0, 1, 0, 1)
+			SectionInline.Size = UDim2.new(1, -2, 1, -2)
 
             local sectiongradient = Instance.new("ImageLabel")
 			sectiongradient.Name = "ImageLabel"
