@@ -1187,7 +1187,7 @@ do
 			NewPage.Size = UDim2.new(0.2, 0, 1, 0)
 			NewPage.Parent = Page.Window.Elements.TabHolder
 
-			local Frame = Instance.new("Frame")
+			local Frame = Instance.new("ScrollingFrame")
 			Frame.Name = "Frame"
 			Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 			Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
