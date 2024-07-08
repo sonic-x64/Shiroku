@@ -722,6 +722,7 @@ do
 		Value.BackgroundTransparency = 1
 		Value.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		Value.BorderSizePixel = 0
+		Value.RichText = true
 		Value.Position = UDim2.new(0, 6, 0, 0)
 		Value.Size = UDim2.new(0,0, 1, 0)
 		Value.Parent = Notif
