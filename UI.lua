@@ -833,6 +833,69 @@ do
                 end
             end)
 
+			local watermark = Instance.new("Frame")
+			local accent = Instance.new("Frame")
+			local UIStroke = Instance.new("UIStroke")
+			local UIStroke_2 = Instance.new("UIStroke")
+			local UIGradient = Instance.new("UIGradient")
+			local text = Instance.new("TextLabel")
+
+			watermark.Name = "watermark"
+			watermark.Parent = ScreenGui
+			watermark.Size = UDim2.new(0, 358, 0, 16)
+			watermark.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			watermark.Position = UDim2.new(0.0147601478, 0, 0.012406948, 0)
+			watermark.BorderSizePixel = 0
+			watermark.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
+			watermark.Visible = false
+			
+			accent.Name = "accent"
+			accent.Parent = watermark
+			accent.Size = UDim2.new(0, 358, 0, 1)
+			accent.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			accent.BorderSizePixel = 0
+			accent.BackgroundColor3 = Color3.fromRGB(8, 255, 239)
+			
+			UIStroke.Name = "UIStroke"
+			UIStroke.Parent = accent
+			UIStroke.Thickness = 1.25
+			
+			UIStroke_2.Name = "UIStroke"
+			UIStroke_2.Parent = watermark
+			UIStroke_2.Thickness = 1.25
+			
+			UIGradient.Name = "UIGradient"
+			UIGradient.Parent = watermark
+			UIGradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(39, 39, 39)), ColorSequenceKeypoint.new(1, Color3.fromRGB(179, 179, 179))})
+			UIGradient.Rotation = 90
+
+			text.FontFace = realfont
+			text.Text = "text"
+			text.TextColor3 = Color3.fromRGB(255, 255, 255)
+			text.TextSize = Library.FSize
+			text.TextStrokeTransparency = 0
+			text.TextXAlignment = Enum.TextXAlignment.Left
+			text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			text.BackgroundTransparency = 1
+			text.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			text.BorderSizePixel = 0
+			text.Position = UDim2.new(0, 0, 0.200000003, 0)
+			text.Size = UDim2.new(0, 294, 0, 11)
+			text.Parent = watermark
+
+			function updatewatermarktext(str)
+				text.Text = str
+			end
+
+			function updatewatermarkaccent(clr)
+				accent.BackgroundColor3 = clr
+			end
+
+			function watermarksetvisible(bool)
+				watermark.Visible = bool
+			end
+
+
 			local Inline = Instance.new("Frame")
 			Inline.Name = "Inline"
 			Inline.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
@@ -1157,6 +1220,7 @@ do
 			function Window:UpdateTitle(str)
 				Title.Text = str
 			end
+		
 
 			-- // Returns
 			return setmetatable(Window, Library)
