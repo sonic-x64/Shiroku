@@ -2503,6 +2503,9 @@ do
 			function Slider:SetVisible(State)
 				NewSlider.Visible = State
 			end
+			function Slider:ChangesliderText(str)
+				Value.Text = str
+			end
 			--
 			Flags[Slider.Flag] = Set
 			Library.Flags[Slider.Flag] = Slider.State
