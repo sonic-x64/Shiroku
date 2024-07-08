@@ -3265,6 +3265,79 @@ do
 			return Keybind
 		end
 		--
+		function Sections:Label(Properties)
+			local Properties = Properties or {}
+			local Label = {
+				Window = self.Window,
+				Page = self.Page,
+				Section = self,
+				Name = (Properties.Name or Properties.name or nil),
+				Placeholder = (
+					Properties.placeholder
+						or Properties.Placeholder
+						or Properties.holder
+						or Properties.Holder
+						or ""
+				),
+				State = (
+					Properties.state
+						or Properties.State
+						or Properties.def
+						or Properties.Def
+						or Properties.default
+						or Properties.Default
+						or ""
+				),
+				Callback = (
+					Properties.callback
+						or Properties.Callback
+						or Properties.callBack
+						or Properties.CallBack
+						or function() end
+				),
+				Flag = (
+					Properties.flag
+						or Properties.Flag
+						or Properties.pointer
+						or Properties.Pointer
+						or Library.NextFlag()
+				),
+			}
+			--
+			local NewBox = Instance.new("TextButton")
+			NewBox.Name = "NewBox"
+			NewBox.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+			NewBox.Text = ""
+			NewBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+			NewBox.TextSize = 14
+			NewBox.AutoButtonColor = false
+			NewBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			NewBox.BackgroundTransparency = 1
+			NewBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			NewBox.BorderSizePixel = 0
+			NewBox.Size = UDim2.new(1, 0, 0, Label.Name ~= nil and 31 or 18)
+			NewBox.Parent = Label.Section.Elements.SectionContent
+
+			local Title = Instance.new("TextLabel")
+			Title.Name = "Title"
+			Title.FontFace = realfont
+			Title.Text = Label.Name ~= nil and Label.Name or ""
+			Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Title.TextSize = Library.FSize
+			Title.TextStrokeTransparency = 0
+			Title.TextXAlignment = Enum.TextXAlignment.Left
+			Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Title.BackgroundTransparency = 1
+			Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			Title.BorderSizePixel = 0
+			Title.Size = UDim2.new(1, 0, 0, 8)
+			Title.Parent = NewBox
+			Title.Visible = Label.Name ~= nil and true or false
+
+			-- // Return
+			Flags[Label.Flag] = set
+			return Label
+		end
 		function Sections:Colorpicker(Properties)
 			local Properties = Properties or {}
 			local Colorpicker = {
