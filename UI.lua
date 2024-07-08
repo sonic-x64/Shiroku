@@ -849,7 +849,9 @@ do
 			watermark.BorderSizePixel = 0
 			watermark.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
 			watermark.Visible = false
-			
+			watermark.Active = true
+			watermark.Draggable = true
+
 			accent.Name = "accent"
 			accent.Parent = watermark
 			accent.Size = UDim2.new(0, 358, 0, 1)
@@ -1101,6 +1103,8 @@ do
 				KeyList.Size = UDim2.new(0, 0, 0, 18)
 				KeyList.Parent = ScreenGui
 				KeyList.Visible = false
+				KeyList.Active = true
+				KeyList.Draggable = true
 
 				local DisabledGradient = Instance.new("UIGradient")
 				DisabledGradient.Name = "DisabledGradient"
