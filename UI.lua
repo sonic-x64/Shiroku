@@ -345,6 +345,7 @@ do
 			--
 			local ColorOutline = Instance.new("Frame")
 			ColorOutline.Name = "ColorOutline"
+			ColorOutline.BackgroundTransparency = 1
 			ColorOutline.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 			ColorOutline.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			ColorOutline.Position = UDim2.new(0,30,0,-20)
