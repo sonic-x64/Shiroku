@@ -357,8 +357,15 @@ do
 			ColorInline.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 			ColorInline.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			ColorInline.BorderSizePixel = 0
-			ColorInline.Position = UDim2.new(0, 2, 0, 2)
+			ColorInline.Position = UDim2.new(0, -211, 0, 26)
 			ColorInline.Size = UDim2.new(1, -4, 1, -4)
+            
+            local buttonforfix = Instance.new("TextButton")
+            buttonforfix.BackgroundTransparency = 1
+            buttonforfix.Size = UDim2.new(1,0,1,0)
+            buttonforfix.Parent = ColorInline
+            buttonforfix.Text = ""
+            buttonforfix.ZIndex = 1
 
 			local Accent = Library:NewInstance("Frame", true)
 			Accent.Name = "Accent"
@@ -607,17 +614,8 @@ do
 				set(color, newalpha)
 			end
 
-			Library:Connection(game:GetService("UserInputService").InputBegan, function(Input)
-				if ColorOutline.Visible and Input.UserInputType == Enum.UserInputType.MouseButton1 then
-					if not Library:IsMouseOverFrame(ColorOutline) and not Library:IsMouseOverFrame(Icon) then
-						ColorOutline.Visible = false
-						parent.ZIndex = 1
-					end
-				end
-			end)
-
-			Icon.MouseButton1Down:Connect(function()
-				ColorOutline.Visible = true
+			Icon.MouseButton1Click:Connect(function()
+				ColorOutline.Visible = not ColorOutline.Visible
 				parent.ZIndex = 5
 
 				if slidinghue then
@@ -4099,5 +4097,78 @@ do
 		end
 	end;
 end;
+
+local title
+local customtitle
+local duration = 5
+local rainbow
+
+
+local window = Library:Window({Name = title})
+
+local FrameTimer = tick()
+local FrameCounter = 0;
+local FPS = 60;
+local fps;
+local ping;
+local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+
+game:GetService("RunService").RenderStepped:Connect(function()
+	local date = os.date()
+	title = "Shiroku.lol | "..tostring(date) 
+	window:UpdateTitle(title)
+
+    FrameCounter += 1;
+
+    if (tick() - FrameTimer) >= 1 then
+        FPS = FrameCounter;
+        FrameTimer = tick();
+        FrameCounter = 0;
+    end;
+
+	fps = math.floor(FPS)
+	ping = math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())
+end)
+
+local legittab = window:Page({Name = "Legit"})
+local ragetab = window:Page({Name = "Rage"})
+local visualstab = window:Page({Name = "Visuals"})
+local playerstab = window:Page({Name = "Players"})
+local settingstab = window:Page({Name = "Settings"})
+
+local aimbotsection = legittab:Section({Name = "Aimbot", Side = "left", Size = 200})
+local silentaimsection = legittab:Section({Name = "Silent Aim", Side = "Right"})
+local settingssection = settingstab:Section({Name = "UI", Side = "Left", Size = 145})
+local infosection = settingstab:Section({Name = "Information", Side = "Right", Size = 155})
+
+aimbotsection:Toggle({Name = "Enabled", Callback = function(v) print(v) end})
+aimbotsection:Slider({Name = "Prediction", Min = 0, Max = 5, Def = 1, Decimals = 0.1, suffix = "%", Flag = "Tecsafst", Callback = function(v) print(v) end})
+
+aimbotsection:List({Name = "Bone", Options = {"Head", "HumanoidRootPart", "UpperTorso", "LowerTorso"}, Flag = "bone", Callback = function(v) print(v) end})
+
+playerstab:PlayerList()
+
+settingssection:Colorpicker({Name = "Accent Color", Flag = 'accentcolorxxdxdxdxdxd', Def = Library.Accent, Callback = function(v) Library:ChangeAccent(v) end})
+settingssection:Keybind({Name = "Menu Key", Flag = "MenuKey", Ignore = false, UseKey = true, Default = Enum.KeyCode.RightShift, Callback = function(State) UiKeybind = State end})
+settingssection:Toggle({Name = "Rainbow Accent", Callback = function(v) rainbow = v end})
+settingssection:Toggle({Name = "Keybind List", Callback = function(v) Library.KeyList:SetVisible(v) end})
+settingssection:Slider({Name = "Notification Duration", Min = 0, Max = 5, Def = duration, Decimals = 0.1, suffix = "s", Flag = "durationxdxdxdx", Callback = function(v) duration = v end})
+
+local fpsslider = infosection:Slider({Name = "FPS", Min = 0, Max = 240, Def = "0", Decimals = 0.1, suffix = "fps", Flag = "fpssdurationxxdx"})
+local pingslider = infosection:Slider({Name = "Ping", Min = 0, Max = 300, Def = "0", Decimals = 0.1, suffix = "ms", Flag = "pingdurationxdxdx"})
+infosection:Textbox({Name = "Game Name: ", Default = GameName, Placeholder = GameName})
+infosection:Button({Name = "Copy Job-ID", Callback = function() setclipboard(([[game:GetService("TeleportService"):TeleportToPlaceInstance(%s, "%s")]]):format(game.PlaceId, game.JobId)) end})
+game:GetService("RunService").RenderStepped:Connect(function()
+	fpsslider:Set(fps)
+	pingslider:Set(ping)
+	if rainbow then
+		Library:ChangeAccent(Color3.fromHSV(tick() % 20/20, 1, 1))
+	else
+		Library:ChangeAccent(Library.Flags['accentcolorxxdxdxdxdxd'])
+	end
+end)
+
+Library:Notification("Hot bbot notification", duration, Library.Accent)
+
 
 return Library
