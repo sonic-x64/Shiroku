@@ -3315,7 +3315,7 @@ do
 			NewBox.BackgroundTransparency = 1
 			NewBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			NewBox.BorderSizePixel = 0
-			NewBox.Size = UDim2.new(1, 0, 0, Label.Name ~= nil and 31 or 18)
+			NewBox.Size = UDim2.new(1, 0, 0, 12)
 			NewBox.Parent = Label.Section.Elements.SectionContent
 
 			local Title = Instance.new("TextLabel")
