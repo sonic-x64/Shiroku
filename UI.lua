@@ -863,8 +863,10 @@ do
 		
 					game:GetService("UserInputService").MouseIconEnabled = false
 					cursor.Position = mousepos
+				        cursor.Size = UDim2.new(0,16,0,16)
 				else
 					game:GetService("UserInputService").MouseIconEnabled = true
+					cursor.Size = UDim2.new(0,0,0,0)
 				end
 			end)
 
