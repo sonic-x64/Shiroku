@@ -843,6 +843,10 @@ do
 				cursor.Position = pos
 			end
 
+			function updatecursorcolor(clr)
+				cursor.ImageColor3 = clr
+			end
+
             game:GetService("UserInputService").InputBegan:Connect(function(input)
                 if input.KeyCode == getgenv().UiKeybind then
                     if Outline.Visible then
