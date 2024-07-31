@@ -825,15 +825,48 @@ do
 			Outline.Text = ""
 			Outline.AutoButtonColor = false
 
+			local cursor = Instance.new("ImageLabel")
+			cursor.Name = "CursorImage"
+			cursor.Parent = ScreenGui
+			cursor.Size = UDim2.new(0,16,0,16)
+			cursor.BorderColor3 = Color3.fromRGB(0,0,0)
+			cursor.BackgroundTransparency = 1
+			cursor.Position = UDim2.new(0,16,0,16)
+			cursor.BorderSizePixel = 0
+			cursor.BackgroundColor3 = Color3.fromRGB(255,255,255)
+			cursor.ScaleType = Enum.ScaleType.Fit
+			cursor.Image = "rbxassetid://18391919911"
+			cursor.ImageColor3 = Color3.fromRGB(0,133,133)
+			cursor.ZIndex = 500
+
+			function updatecursorpos(pos)
+				cursor.Position = pos
+			end
+
             game:GetService("UserInputService").InputBegan:Connect(function(input)
                 if input.KeyCode == getgenv().UiKeybind then
                     if Outline.Visible then
                         Outline.Visible = false
+						menuopen = false
                     else
                         Outline.Visible = true
+						menuopen = true
                     end
                 end
             end)
+
+			game:GetService("RunService").RenderStepped:Connect(function ()
+				if Outline.Visible == true then
+					local inputsrv = game:GetService("UserInputService")
+					local lpmouse = game.Players.LocalPlayer:GetMouse()
+					local mousepos = UDim2.new(0, game:GetService("UserInputService"):GetMouseLocation().X - 2, 0, game:GetService("UserInputService"):GetMouseLocation().Y - 36)
+		
+					game:GetService("UserInputService").MouseIconEnabled = false
+					cursor.Position = mousepos
+				else
+					game:GetService("UserInputService").MouseIconEnabled = true
+				end
+			end)
 
 			local watermark = Instance.new("Frame")
 			local accent = Instance.new("Frame")
