@@ -2604,7 +2604,6 @@ do
 			NewList.BorderSizePixel = 0
 			NewList.Size = UDim2.new(1, 0, 0, 31)
 			NewList.Parent = Dropdown.Section.Elements.SectionContent
-			NewList.ZIndex = 500
 
 			local ToggleFrame = Instance.new("TextButton")
 			ToggleFrame.Name = "ToggleFrame"
@@ -2667,7 +2666,6 @@ do
 			ContentOutline.Position = UDim2.new(0, 0, 1, 0)
 			ContentOutline.Size = UDim2.new(1, 0, 0, 0)
 			ContentOutline.Visible = false
-			ContentOutline.ZIndex = 500
 
 			local UIListLayout = Instance.new("UIListLayout")
 			UIListLayout.Name = "UIListLayout"
