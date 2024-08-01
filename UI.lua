@@ -2666,6 +2666,7 @@ do
 			ContentOutline.Position = UDim2.new(0, 0, 1, 0)
 			ContentOutline.Size = UDim2.new(1, 0, 0, 0)
 			ContentOutline.Visible = false
+			ContentOutline.ZIndex = 500
 
 			local UIListLayout = Instance.new("UIListLayout")
 			UIListLayout.Name = "UIListLayout"
