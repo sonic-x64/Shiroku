@@ -2604,6 +2604,7 @@ do
 			NewList.BorderSizePixel = 0
 			NewList.Size = UDim2.new(1, 0, 0, 31)
 			NewList.Parent = Dropdown.Section.Elements.SectionContent
+			NewList.ZIndex = 500
 
 			local ToggleFrame = Instance.new("TextButton")
 			ToggleFrame.Name = "ToggleFrame"
