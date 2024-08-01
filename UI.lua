@@ -360,6 +360,7 @@ do
 			ColorInline.BorderSizePixel = 0
 			ColorInline.Position = UDim2.new(0, -211, 0, 26)
 			ColorInline.Size = UDim2.new(1, -4, 1, -4)
+			ColorInline.ZIndex = 500
             
             local buttonforfix = Instance.new("TextButton")
             buttonforfix.BackgroundTransparency = 1
