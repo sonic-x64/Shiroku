@@ -30,7 +30,7 @@ local Library = {};
 do
 	Library = {
 		Open = true;
-		Keybind = Enum.KeyCode.RightShift
+		Keybind = Enum.KeyCode.RightShift;
 		Accent = Color3.fromRGB(0, 170, 255);
 		Pages = {};
 		Sections = {};
