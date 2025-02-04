@@ -30,6 +30,7 @@ local Library = {};
 do
 	Library = {
 		Open = true;
+		Keybind = Enum.KeyCode.RightShift
 		Accent = Color3.fromRGB(0, 170, 255);
 		Pages = {};
 		Sections = {};
@@ -851,7 +852,7 @@ do
 			end
 
             game:GetService("UserInputService").InputBegan:Connect(function(input)
-                if input.KeyCode == getgenv().UiKeybind then
+                if input.KeyCode == Library.Keybind then
                     if Outline.Visible then
                         Outline.Visible = false
 						menuopen = false
