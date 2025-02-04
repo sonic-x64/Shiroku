@@ -1055,6 +1055,7 @@ do
 			Title.Name = "Title"
 			Title.FontFace = realfont
 			Title.Text = Window.Name
+			Title.RichText = true
 			Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 			Title.TextSize = Library.FSize
 			Title.TextStrokeTransparency = 0
