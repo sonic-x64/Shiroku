@@ -811,6 +811,7 @@ do
 			--
 			local ScreenGui = Instance.new("ScreenGui", cloneref(game:GetService("CoreGui")))
 			ScreenGui.Name = "ScreenGui"
+			ScreenGui.Parent = cloneref(game:GetService("CoreGui"))
 			ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 			Library.ScreenGUI = ScreenGui
 			ScreenGui.DisplayOrder = 100
