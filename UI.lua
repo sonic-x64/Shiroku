@@ -867,7 +867,7 @@ do
 				if Outline.Visible == true then
 					local inputsrv = game:GetService("UserInputService")
 					local lpmouse = game.Players.LocalPlayer:GetMouse()
-					local mousepos = UDim2.new(0, game:GetService("UserInputService"):GetMouseLocation().X - 2, 0, game:GetService("UserInputService"):GetMouseLocation().Y - 41)
+					local mousepos = UDim2.new(0, game:GetService("UserInputService"):GetMouseLocation().X - 2, 0, game:GetService("UserInputService"):GetMouseLocation().Y - 46)
 		
 					game:GetService("UserInputService").MouseIconEnabled = false
 					cursor.Position = mousepos
