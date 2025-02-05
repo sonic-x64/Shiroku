@@ -969,7 +969,9 @@ do
 			local holderinlinegradientuwu = Instance.new("ImageLabel")
 			holderinlinegradientuwu.Name = "ImageLabel"
 			holderinlinegradientuwu.Image = "rbxassetid://18321983559"
-            holderinlinegradientuwu.BackgroundTransparency = 1
+			holderinlinegradientuwu.ImageTransparency = 0.5
+                        holderinlinegradientuwu.BackgroundTransparency = 1
+			holderinlinegradientuwu.BorderSizePixel = 0
 			holderinlinegradientuwu.BackgroundColor3 = Color3.fromRGB(21,21,21)
 			holderinlinegradientuwu.BorderColor3 = Color3.fromRGB(0,0,0)
 			holderinlinegradientuwu.Position = UDim2.new(0, 2, 0, 2)
@@ -1478,7 +1480,9 @@ do
             local sectiongradient = Instance.new("ImageLabel")
 			sectiongradient.Name = "ImageLabel"
 			sectiongradient.Image = "rbxassetid://18321983559"
-            sectiongradient.BackgroundTransparency = 1
+			sectiongradient.ImageTransparency = 0.5
+                        sectiongradient.BackgroundTransparency = 1
+			sectiongradient.BorderSizePixel = 0
 			sectiongradient.BackgroundColor3 = Color3.fromRGB(35,35,35)
 			sectiongradient.BorderColor3 = Color3.fromRGB(0,0,0)
 			sectiongradient.Position = UDim2.new(0, 1, 0, 1)
