@@ -912,7 +912,11 @@ do
 			
 			UIGradient.Name = "UIGradient"
 			UIGradient.Parent = watermark
-			UIGradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(39, 39, 39)), ColorSequenceKeypoint.new(1, Color3.fromRGB(179, 179, 179))})
+			--UIGradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(39, 39, 39)), ColorSequenceKeypoint.new(1, Color3.fromRGB(179, 179, 179))})
+			UIGradient.Color = ColorSequence.new({
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(145, 145, 145)),
+			})
 			UIGradient.Rotation = 90
 
 			text.FontFace = realfont
