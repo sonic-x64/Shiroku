@@ -886,7 +886,7 @@ do
 
 			watermark.Name = "watermark"
 			watermark.Parent = ScreenGui
-			watermark.Size = UDim2.new(0, 358, 0, 16)
+			watermark.Size = UDim2.new(0, 364, 0, 16)
 			watermark.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			watermark.Position = UDim2.new(0.0147601478, 0, 0.012406948, 0)
 			watermark.BorderSizePixel = 0
