@@ -853,7 +853,11 @@ do
 			end
 
 			function updatecursorcolor(clr)
-				cursor.ImageColor3 = clr
+			       cursor.ImageColor3 = clr
+			end
+
+			function updatewindowsize(x, y)
+			       Outline.Size = UDim2.new(0, x, 0, y)
 			end
 
             userinputservice.InputBegan:Connect(function(input)
