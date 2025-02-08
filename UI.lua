@@ -886,7 +886,7 @@ do
 
 			watermark.Name = "watermark"
 			watermark.Parent = ScreenGui
-			watermark.Size = UDim2.new(0, 397, 0, 16)
+			watermark.Size = UDim2.new(0, 395, 0, 16)
 			watermark.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			watermark.Position = UDim2.new(0.0147601478, 0, 0.012406948, 0)
 			watermark.BorderSizePixel = 0
@@ -897,7 +897,7 @@ do
 
 			accent.Name = "accent"
 			accent.Parent = watermark
-			accent.Size = UDim2.new(0, 397, 0, 1)
+			accent.Size = UDim2.new(0, 395, 0, 1)
 			accent.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			accent.BorderSizePixel = 0
 			accent.BackgroundColor3 = Color3.fromRGB(8, 255, 239)
