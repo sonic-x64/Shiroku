@@ -816,9 +816,9 @@ do
 				Name = Options.Name or "Monlith";
 			};
 			--
-			local ScreenGui = Instance.new("ScreenGui", cloneref(game:GetService("CoreGui")))
+			local ScreenGui = Instance.new("ScreenGui", gethui())
 			ScreenGui.Name = "ScreenGui"
-			ScreenGui.Parent = cloneref(game:GetService("CoreGui"))
+			ScreenGui.Parent = gethui()
 			ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 			Library.ScreenGUI = ScreenGui
 			ScreenGui.DisplayOrder = 100
