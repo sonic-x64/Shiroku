@@ -26,6 +26,8 @@ end;
 
 local realfont = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
 
+local userinputservice = cloneref(game:GetService("UserInputService"))
+
 local Library = {};
 do
 	Library = {
@@ -507,7 +509,7 @@ do
 			local slidingalpha = false
 
 			local function update()
-				local real_pos = game:GetService("UserInputService"):GetMouseLocation()
+				local real_pos = userinputservice:GetMouseLocation()
 				local mouse_position = Vector2.new(real_pos.X - 5, real_pos.Y - 30)
 				local relative_palette = (mouse_position - TextButton.AbsolutePosition)
 				local relative_hue     = (mouse_position - Hue.AbsolutePosition)
@@ -599,7 +601,7 @@ do
 				end
 			end)
 
-			Library:Connection(game:GetService("UserInputService").InputChanged, function(input)
+			Library:Connection(userinputservice.InputChanged, function(input)
 				if input.UserInputType == Enum.UserInputType.MouseMovement then
 
 					if slidinghue then
@@ -851,7 +853,7 @@ do
 				cursor.ImageColor3 = clr
 			end
 
-            game:GetService("UserInputService").InputBegan:Connect(function(input)
+            userinputservice.InputBegan:Connect(function(input)
                 if input.KeyCode == Library.Keybind then
                     if Outline.Visible then
                         Outline.Visible = false
@@ -865,14 +867,14 @@ do
 
 			game:GetService("RunService").RenderStepped:Connect(function ()
 				if Outline.Visible == true then
-					local inputsrv = game:GetService("UserInputService")
+					local inputsrv = userinputservice
 					local lpmouse = game.Players.LocalPlayer:GetMouse()
 						
-					game:GetService("UserInputService").MouseIconEnabled = false
+					userinputservice.MouseIconEnabled = false
 					cursor.Position = UDim2.new(0, lpmouse.X - 2, 0, lpmouse.Y)
 				        cursor.Size = UDim2.new(0,16,0,16)
 				else
-					game:GetService("UserInputService").MouseIconEnabled = true
+					userinputservice.MouseIconEnabled = true
 					cursor.Size = UDim2.new(0,0,0,0)
 				end
 			end)
@@ -1098,19 +1100,19 @@ do
 
 			-- // Dragging
 			Library:Connection(Outline.MouseButton1Down, function()
-				local Location = game:GetService("UserInputService"):GetMouseLocation()
+				local Location = userinputservice:GetMouseLocation()
 				Window.Dragging[1] = true
 				Window.Dragging[2] = UDim2.new(0, Location.X - Outline.AbsolutePosition.X, 0, Location.Y - Outline.AbsolutePosition.Y)
 			end)
-			Library:Connection(game:GetService("UserInputService").InputEnded, function(Input)
+			Library:Connection(userinputservice.InputEnded, function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 and Window.Dragging[1] then
-					local Location = game:GetService("UserInputService"):GetMouseLocation()
+					local Location = userinputservice:GetMouseLocation()
 					Window.Dragging[1] = false
 					Window.Dragging[2] = UDim2.new(0, 0, 0, 0)
 				end
 			end)
-			Library:Connection(game:GetService("UserInputService").InputChanged, function(Input)
-				local Location = game:GetService("UserInputService"):GetMouseLocation()
+			Library:Connection(userinputservice.InputChanged, function(Input)
+				local Location = userinputservice:GetMouseLocation()
 				local ActualLocation = nil
 
 				-- Dragging
@@ -1123,7 +1125,7 @@ do
 					)
 				end
 			end)
-			Library:Connection(game:GetService("UserInputService").InputBegan, function(Input)
+			Library:Connection(userinputservice.InputBegan, function(Input)
 				if Input.KeyCode == Library.UIKey then
 					Library:SetOpen(not Library.Open)
 				end
@@ -2224,7 +2226,7 @@ do
 						Value.Text = "..."
 
 						Keybind.Binding = Library:Connection(
-							game:GetService("UserInputService").InputBegan,
+							userinputservice.InputBegan,
 							function(input, gpe)
 								set(
 									input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode
@@ -2238,7 +2240,7 @@ do
 					end
 				end)
 				--
-				Library:Connection(game:GetService("UserInputService").InputBegan, function(inp)
+				Library:Connection(userinputservice.InputBegan, function(inp)
 					if (inp.KeyCode == Key or inp.UserInputType == Key) and not Keybind.Binding and not Keybind.UseKey then
 						if Keybind.Mode == "Hold" then
 							if Keybind.Flag then
@@ -2265,7 +2267,7 @@ do
 					end
 				end)
 				--
-				Library:Connection(game:GetService("UserInputService").InputEnded, function(inp)
+				Library:Connection(userinputservice.InputEnded, function(inp)
 					if Keybind.Mode == "Hold" and not Keybind.UseKey then
 						if Key ~= "" or Key ~= nil then
 							if inp.KeyCode == Key or inp.UserInputType == Key then
@@ -2318,7 +2320,7 @@ do
 					NewToggle.ZIndex = 1
 				end)
 				--
-				Library:Connection(game:GetService("UserInputService").InputBegan, function(Input)
+				Library:Connection(userinputservice.InputBegan, function(Input)
 					if ModeBox.Visible and (Input.UserInputType == Enum.UserInputType.MouseButton1) then
 						if not Library:IsMouseOverFrame(ModeBox) then
 							ModeBox.Visible = false
@@ -2541,7 +2543,7 @@ do
 					Sliding = false
 				end
 			end)
-			Library:Connection(game:GetService("UserInputService").InputChanged, function(input)
+			Library:Connection(userinputservice.InputChanged, function(input)
 				if input.UserInputType == Enum.UserInputType.MouseMovement then
 					if Sliding then
 						ISlide(input)
@@ -2725,7 +2727,7 @@ do
 					NewList.ZIndex = 1
 				end
 			end)
-			Library:Connection(game:GetService("UserInputService").InputBegan, function(Input)
+			Library:Connection(userinputservice.InputBegan, function(Input)
 				if ContentOutline.Visible and Input.UserInputType == Enum.UserInputType.MouseButton1 then
 					if not Library:IsMouseOverFrame(ContentOutline) and not Library:IsMouseOverFrame(ToggleFrame) then
 						ContentOutline.Visible = false
@@ -3201,7 +3203,7 @@ do
 					Value.Text = "..."
 
 					Keybind.Binding = Library:Connection(
-						game:GetService("UserInputService").InputBegan,
+						userinputservice.InputBegan,
 						function(input, gpe)
 							set(
 								input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode
@@ -3215,7 +3217,7 @@ do
 				end
 			end)
 			--
-			Library:Connection(game:GetService("UserInputService").InputBegan, function(inp)
+			Library:Connection(userinputservice.InputBegan, function(inp)
 				if (inp.KeyCode == Key or inp.UserInputType == Key) and not Keybind.Binding and not Keybind.UseKey then
 					if Keybind.Mode == "Hold" then
 						if Keybind.Flag then
@@ -3242,7 +3244,7 @@ do
 				end
 			end)
 			--
-			Library:Connection(game:GetService("UserInputService").InputEnded, function(inp)
+			Library:Connection(userinputservice.InputEnded, function(inp)
 				if Keybind.Mode == "Hold" and not Keybind.UseKey then
 					if Key ~= "" or Key ~= nil then
 						if inp.KeyCode == Key or inp.UserInputType == Key then
@@ -3295,7 +3297,7 @@ do
 				NewKey.ZIndex = 1
 			end)
 			--
-			Library:Connection(game:GetService("UserInputService").InputBegan, function(Input)
+			Library:Connection(userinputservice.InputBegan, function(Input)
 				if ModeBox.Visible and (Input.UserInputType == Enum.UserInputType.MouseButton1) then
 					if not Library:IsMouseOverFrame(ModeBox) then
 						ModeBox.Visible = false
