@@ -19,7 +19,7 @@ do
 		}
 	}
 
-	writefile("menu_font.font", game:GetService("HttpService"):JSONEncode(smallest_pixel))
+	writefile("menu_font.font", cloneref(game:GetService("HttpService")):JSONEncode(smallest_pixel))
 
 	getgenv().menu_font = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
 end; 
@@ -27,6 +27,9 @@ end;
 local realfont = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
 
 local userinputservice = cloneref(game:GetService("UserInputService"))
+local players = cloneref(game:GetService("Players"))
+local runservice = cloneref(game:GetService("RunService"))
+local tweenservice = cloneref(game:GetService("TweenService"))
 
 local Library = {};
 do
@@ -111,9 +114,9 @@ do
 	Library.__index = Library
 	Library.Pages.__index = Library.Pages
 	Library.Sections.__index = Library.Sections
-	local LocalPlayer = game:GetService('Players').LocalPlayer;
+	local LocalPlayer = players.LocalPlayer;
 	local Mouse = LocalPlayer:GetMouse();
-	local TweenService = game:GetService("TweenService");
+	local TweenService = tweenservice;
 
 	-- // Misc Functions
 	do
@@ -664,7 +667,7 @@ do
 	function Library:updateNotifsPositions(position)
 		for i, v in pairs(Library.Notifs) do 
 			local Position = Vector2.new(20, 20)
-			game:GetService("TweenService"):Create(v.Container, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Position = UDim2.new(0,Position.X,0,Position.Y + (i * 25))}):Play()
+			tweenservice:Create(v.Container, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Position = UDim2.new(0,Position.X,0,Position.Y + (i * 25))}):Play()
 		end 
 	end
 
@@ -770,23 +773,23 @@ do
 			Notif.AnchorPoint = Vector2.new(1,0)
 			for i,v in next, notification.Objects do
 				if v:IsA("Frame") then
-					game:GetService("TweenService"):Create(v, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+					tweenservice:Create(v, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
 				elseif v:IsA("UIStroke") then
-					game:GetService("TweenService"):Create(v, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Transparency = 0.8}):Play()
+					tweenservice:Create(v, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Transparency = 0.8}):Play()
 				end
 			end
-			local Tween1 = game:GetService("TweenService"):Create(Notif, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {AnchorPoint = Vector2.new(0,0)}):Play()
-			game:GetService("TweenService"):Create(Value, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+			local Tween1 = tweenservice:Create(Notif, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {AnchorPoint = Vector2.new(0,0)}):Play()
+			tweenservice:Create(Value, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
 			task.wait(duration)
-			game:GetService("TweenService"):Create(Notif, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {AnchorPoint = Vector2.new(1,0)}):Play()
+			tweenservice:Create(Notif, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {AnchorPoint = Vector2.new(1,0)}):Play()
 			for i,v in next, notification.Objects do
 				if v:IsA("Frame") then
-					game:GetService("TweenService"):Create(v, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+					tweenservice:Create(v, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
 				elseif v:IsA("UIStroke") then
-					game:GetService("TweenService"):Create(v, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Transparency = 1}):Play()
+					tweenservice:Create(v, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Transparency = 1}):Play()
 				end
 			end
-			game:GetService("TweenService"):Create(Value, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
+			tweenservice:Create(Value, TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
 		end)
 
 		task.delay(duration, function()
@@ -865,7 +868,7 @@ do
                 end
             end)
 
-			game:GetService("RunService").RenderStepped:Connect(function ()
+			runservice.RenderStepped:Connect(function ()
 				if Outline.Visible == true then
 					local inputsrv = userinputservice
 					local lpmouse = game.Players.LocalPlayer:GetMouse()
@@ -2246,7 +2249,7 @@ do
 							if Keybind.Flag then
 								Library.Flags[Keybind.Flag] = true
 							end
-							c = Library:Connection(game:GetService("RunService").RenderStepped, function()
+							c = Library:Connection(runservice.RenderStepped, function()
 								if Keybind.Callback then
 									Keybind.Callback(true)
 								end
@@ -3223,7 +3226,7 @@ do
 						if Keybind.Flag then
 							Library.Flags[Keybind.Flag] = true
 						end
-						c = Library:Connection(game:GetService("RunService").RenderStepped, function()
+						c = Library:Connection(runservice.RenderStepped, function()
 							if Keybind.Callback then
 								Keybind.Callback(true)
 							end
@@ -4081,7 +4084,7 @@ do
 						Playerlist.LastPlayer = Playerlist.CurrentPlayer;
 						PlayerName1.Text = ("Id : %s\nDisplay Name : %s\nName : %s\nAccount Age : %s"):format(Playerlist.CurrentPlayer.UserId, Playerlist.CurrentPlayer.DisplayName ~= "" and Playerlist.CurrentPlayer.DisplayName or Playerlist.CurrentPlayer.Name, Playerlist.CurrentPlayer.Name, Playerlist.CurrentPlayer.AccountAge)
 						--
-						local imagedata = game:GetService("Players"):GetUserThumbnailAsync(Playerlist.CurrentPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+						local imagedata = players:GetUserThumbnailAsync(Playerlist.CurrentPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
 
 						ImageLabel.Image = imagedata
 					end;
@@ -4214,7 +4217,7 @@ do
 								Playerlist.LastPlayer = Playerlist.CurrentPlayer;
 								PlayerName1.Text = ("Id : %s\nDisplay Name : %s\nName : %s\nAccount Age : %s"):format(Playerlist.CurrentPlayer.UserId, Playerlist.CurrentPlayer.DisplayName ~= "" and Playerlist.CurrentPlayer.DisplayName or Playerlist.CurrentPlayer.Name, Playerlist.CurrentPlayer.Name, Playerlist.CurrentPlayer.AccountAge)
 								--
-								local imagedata = game:GetService("Players"):GetUserThumbnailAsync(Playerlist.CurrentPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+								local imagedata = players:GetUserThumbnailAsync(Playerlist.CurrentPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
 
 								ImageLabel.Image = imagedata
 							end;
