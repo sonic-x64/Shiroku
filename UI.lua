@@ -19,17 +19,17 @@ do
 		}
 	}
 
-	writefile("menu_font.font", cloneref(game:GetService("HttpService")):JSONEncode(smallest_pixel))
+	writefile("menu_font.font", game:GetService("HttpService"):JSONEncode(smallest_pixel))
 
 	getgenv().menu_font = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
 end; 
 
 local realfont = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
 
-local userinputservice = cloneref(game:GetService("UserInputService"))
-local players = cloneref(game:GetService("Players"))
-local runservice = cloneref(game:GetService("RunService"))
-local tweenservice = cloneref(game:GetService("TweenService"))
+local userinputservice = game:GetService("UserInputService")
+local players = game:GetService("Players")
+local runservice = game:GetService("RunService")
+local tweenservice = game:GetService("TweenService")
 
 local hiddenui = gethui
 
