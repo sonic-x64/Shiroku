@@ -1279,7 +1279,6 @@ do
 			--
 			local NewPage = Instance.new("TextButton")
 			NewPage.Name = "NewPage"
-			NewPage.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 			NewPage.TextColor3 = Color3.fromRGB(0, 0, 0)
 			NewPage.TextSize = 14
 			NewPage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1665,7 +1664,6 @@ do
 				-- // Drawings
 				local NewPage = Instance.new("TextButton")
 				NewPage.Name = "NewPage"
-				NewPage.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 				NewPage.TextColor3 = Color3.fromRGB(0, 0, 0)
 				NewPage.TextSize = 14
 				NewPage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1840,7 +1838,6 @@ do
 			--
 			local NewToggle = Instance.new("TextButton")
 			NewToggle.Name = "NewToggle"
-			NewToggle.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 			NewToggle.Text = ""
 			NewToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
 			NewToggle.TextSize = 14
@@ -2028,7 +2025,6 @@ do
 				KeyFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				KeyFrame.Position = UDim2.new(1, -40, 0.5, 0)
 				KeyFrame.Size = UDim2.new(0, 40, 0, 12)
-				KeyFrame.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 				KeyFrame.Text = ""
 				KeyFrame.TextColor3 = Color3.fromRGB(0, 0, 0)
 				KeyFrame.TextSize = 14
@@ -2596,7 +2592,6 @@ do
 			ToggleFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			ToggleFrame.Position = UDim2.new(0, 0, 1, -18)
 			ToggleFrame.Size = UDim2.new(1, 0, 0, 18)
-			ToggleFrame.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 			ToggleFrame.Text = ""
 			ToggleFrame.TextColor3 = Color3.fromRGB(0, 0, 0)
 			ToggleFrame.TextSize = Library.FSize
@@ -2770,7 +2765,6 @@ do
 					--
 					local OptButton = Instance.new("TextButton")
 					OptButton.Name = "OptButton"
-					OptButton.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 					OptButton.Text = ""
 					OptButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 					OptButton.TextSize = Library.FSize
@@ -2980,7 +2974,6 @@ do
 			KeyFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			KeyFrame.Position = UDim2.new(1, -40, 0.5, 0)
 			KeyFrame.Size = UDim2.new(0, 40, 0, 12)
-			KeyFrame.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 			KeyFrame.Text = ""
 			KeyFrame.TextColor3 = Color3.fromRGB(0, 0, 0)
 			KeyFrame.TextSize = 14
@@ -3323,7 +3316,6 @@ do
 			--
 			local NewBox = Instance.new("TextButton")
 			NewBox.Name = "NewBox"
-			NewBox.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 			NewBox.Text = ""
 			NewBox.TextColor3 = Color3.fromRGB(0, 0, 0)
 			NewBox.TextSize = 14
@@ -3533,7 +3525,6 @@ do
 			--
 			local NewBox = Instance.new("TextButton")
 			NewBox.Name = "NewBox"
-			NewBox.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 			NewBox.Text = ""
 			NewBox.TextColor3 = Color3.fromRGB(0, 0, 0)
 			NewBox.TextSize = 14
@@ -3641,7 +3632,6 @@ do
 			--
 			local NewButton = Instance.new("TextButton")
 			NewButton.Name = "NewButton"
-			NewButton.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 			NewButton.Text = ""
 			NewButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 			NewButton.TextSize = 14
@@ -3779,7 +3769,6 @@ do
 
 			local Friend = Instance.new("TextButton")
 			Friend.Name = "Friend"
-			Friend.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 			Friend.Text = ""
 			Friend.TextColor3 = Color3.fromRGB(0, 0, 0)
 			Friend.TextSize = 14
@@ -3899,7 +3888,6 @@ do
 
 			local SectionName = Instance.new("TextLabel")
 			SectionName.Name = "SectionName"
-			SectionName.FontFace = nil
 			SectionName.Text = "Player List"
 			SectionName.TextColor3 = Color3.fromRGB(255,255,255)
 			SectionName.TextSize = Library.FSize
@@ -3941,7 +3929,6 @@ do
 
 			local TeamLabel = Instance.new("TextLabel")
 			TeamLabel.Name = "TeamLabel"
-			TeamLabel.FontFace = nil
 			TeamLabel.Text = "Team"
 			TeamLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 			TeamLabel.TextSize = Library.FSize
@@ -3957,7 +3944,6 @@ do
 
 			local NameLabel = Instance.new("TextLabel")
 			NameLabel.Name = "NameLabel"
-			NameLabel.FontFace = nil
 			NameLabel.Text = "Name"
 			NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 			NameLabel.TextSize = Library.FSize
@@ -3973,7 +3959,6 @@ do
 
 			local StatusLabel = Instance.new("TextLabel")
 			StatusLabel.Name = "StatusLabel"
-			StatusLabel.FontFace = nil
 			StatusLabel.Text = "Status"
 			StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 			StatusLabel.TextSize = Library.FSize
@@ -4048,7 +4033,6 @@ do
 
 						local NewPlayer1 = Instance.new("TextButton")
 						NewPlayer1.Name = "NewPlayer"
-						NewPlayer1.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 						NewPlayer1.Text = ""
 						NewPlayer1.TextColor3 = Color3.fromRGB(0, 0, 0)
 						NewPlayer1.TextSize = 14
@@ -4060,7 +4044,6 @@ do
 
 						local PlayerName = Instance.new("TextLabel")
 						PlayerName.Name = "PlayerName"
-						PlayerName.FontFace = nil
 						PlayerName.Text = option.Name
 						PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
 						PlayerName.TextSize = Library.FSize
@@ -4077,7 +4060,6 @@ do
 
 						local PlayerStatus = Instance.new("TextLabel")
 						PlayerStatus.Name = "PlayerStatus"
-						PlayerStatus.FontFace = nil
 						PlayerStatus.Text = option == game.Players.LocalPlayer and "Local Player" or table.find(Library.Friends, option) and "Friendly" or table.find(Library.Priorities, option) and "Priority" or "None"
 						PlayerStatus.TextColor3 = option == game.Players.LocalPlayer and Color3.fromRGB(0, 170, 255) or table.find(Library.Friends, option) and Color3.fromRGB(0,255,0) or table.find(Library.Priorities, option) and Color3.fromRGB(255,0,0) or Color3.fromRGB(255,255,255)
 						PlayerStatus.TextSize = Library.FSize
@@ -4093,7 +4075,6 @@ do
 
 						local PlayerAccent = Library:NewInstance("TextLabel", true)
 						PlayerAccent.Name = "PlayerAccent"
-						PlayerAccent.FontFace = nil
 						PlayerAccent.Text = option.Name
 						PlayerAccent.TextColor3 = Library.Accent
 						PlayerAccent.TextSize = Library.FSize
@@ -4111,7 +4092,6 @@ do
 
 						local PlayerTeam = Instance.new("TextLabel")
 						PlayerTeam.Name = "PlayerTeam"
-						PlayerTeam.FontFace = nil
 						PlayerTeam.Text = option:FindFirstChild("Team") and tostring(option.Team.Name) or "No Team"
 						PlayerTeam.TextColor3 = option:FindFirstChild("Team") and option.TeamColor.Color or Color3.fromRGB(255,255,255)
 						PlayerTeam.TextSize = Library.FSize
