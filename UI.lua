@@ -31,7 +31,7 @@ local players = game:GetService("Players")
 local runservice = game:GetService("RunService")
 local tweenservice = game:GetService("TweenService")
 
-local hiddenui = cloneref(game:GetService("CoreGui"))
+local hiddenui = game:GetService("CoreGui")
 
 local Library = {};
 do
