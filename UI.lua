@@ -1,23 +1,28 @@
 
 local http_service = game:GetService("HttpService")
 
-   writefile("main.ttf", game:HttpGet("https://github.com/f1nobe7650/other/raw/main/uis/font.ttf"))
-
-    local tahoma = {
+do 
+    -- 
+    writefile("smallest_pixel.ttf", game:HttpGet("https://github.com/f1nobe7650/other/raw/main/ProggyClean.ttf"))
+    -- 
+    local smallest_pixel = {
         name = "SmallestPixel7",
         faces = {
             {
                 name = "Regular",
-                weight = 400,
-                style = "normal",
-                assetId = getcustomasset("main.ttf")
+                weight = Weight,
+                style = Style,
+                assetId = getcustomasset("smallest_pixel.ttf")
             }
         }
     }
-    
-    writefile("main_encoded.ttf", http_service:JSONEncode(tahoma))
 
-local realfont = Font.new(getcustomasset("main_encoded.ttf"), Enum.FontWeight.Regular)
+    writefile("menu_font.font", http_service:JSONEncode(smallest_pixel))
+
+    getgenv().menu_font = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
+end; 
+
+local realfont = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
 
 local userinputservice = game:GetService("UserInputService")
 local players = game:GetService("Players")
