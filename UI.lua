@@ -18,8 +18,6 @@ do
     }
 
     writefile("menu_font.font", http_service:JSONEncode(smallest_pixel))
-
-    getgenv().menu_font = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
 end; 
 
 local realfont = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
