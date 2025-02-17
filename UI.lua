@@ -31,7 +31,7 @@ local players = game:GetService("Players")
 local runservice = game:GetService("RunService")
 local tweenservice = game:GetService("TweenService")
 
-local hiddenui = game:GetService("CoreGui")
+local coregui = game:GetService("CoreGui")
 
 local Library = {};
 do
@@ -818,9 +818,9 @@ do
 				Name = Options.Name or "Monlith";
 			};
 			--
-			local ScreenGui = Instance.new("ScreenGui", hiddenui)
+			local ScreenGui = Instance.new("ScreenGui", coregui)
 			ScreenGui.Name = "ScreenGui"
-			ScreenGui.Parent = hiddenui
+			ScreenGui.Parent = coregui
 			ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 			Library.ScreenGUI = ScreenGui
 			ScreenGui.DisplayOrder = 100
