@@ -1,23 +1,23 @@
 
-local http_service = game:GetService("HttpService")
-
 do 
-    -- 
-    writefile("smallest_pixel.ttf", game:HttpGet("https://github.com/f1nobe7650/other/raw/main/ProggyClean.ttf"))
-    -- 
-    local smallest_pixel = {
-        name = "SmallestPixel7",
-        faces = {
-            {
-                name = "Regular",
-                weight = Weight,
-                style = Style,
-                assetId = getcustomasset("smallest_pixel.ttf")
-            }
-        }
-    }
+	-- 
+	writefile("smallest_pixel.ttf", game:HttpGet("https://github.com/f1nobe7650/other/raw/main/ProggyClean.ttf"))
+	-- 
+	local smallest_pixel = {
+		name = "SmallestPixel7",
+		faces = {
+			{
+				name = "Regular",
+				weight = Weight,
+				style = Style,
+				assetId = getcustomasset("smallest_pixel.ttf")
+			}
+		}
+	}
 
-    writefile("menu_font.font", http_service:JSONEncode(smallest_pixel))
+	writefile("menu_font.font", game:GetService("HttpService"):JSONEncode(smallest_pixel))
+
+	getgenv().menu_font = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
 end; 
 
 local realfont = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
