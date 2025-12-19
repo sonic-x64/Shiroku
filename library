@@ -1,4 +1,7 @@
 local loops = {}
+
+local types = {}
+
 local renderstepped = {}
 types.renderstepped = renderstepped
 
