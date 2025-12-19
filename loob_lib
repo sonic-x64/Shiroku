@@ -1,0 +1,35 @@
+local loops = {}
+local renderstepped = {}
+types.renderstepped = renderstepped
+
+function loops:renderstepped(name, func)
+    if not renderstepped[name] then
+        renderstepped[name] = run_service.RenderStepped:Connect(func)
+
+        return function ()
+            loops:remove("renderstepped", name)
+        end
+    end
+end
+
+local heartbeat = {}
+types.heartbeat = heartbeat
+
+function loops:heartbeat(name, func)
+    if not heartbeat[name] then
+        heartbeat[name] = run_service.Heartbeat:Connect(func)
+
+        return function ()
+            loops:remove("heartbeat", name)
+        end
+    end
+end
+
+function loops:remove(loopType, name)
+    if types[loopType] then
+        types[loopType][name]:Disconnect()
+        types[loopType][name] = nil
+    end
+end
+
+return loops
