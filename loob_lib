@@ -4,7 +4,7 @@ types.renderstepped = renderstepped
 
 function loops:renderstepped(name, func)
     if not renderstepped[name] then
-        renderstepped[name] = run_service.RenderStepped:Connect(func)
+        renderstepped[name] = game:GetService("RunService").RenderStepped:Connect(func)
 
         return function ()
             loops:remove("renderstepped", name)
@@ -17,7 +17,7 @@ types.heartbeat = heartbeat
 
 function loops:heartbeat(name, func)
     if not heartbeat[name] then
-        heartbeat[name] = run_service.Heartbeat:Connect(func)
+        heartbeat[name] = game:GetService("RunService").Heartbeat:Connect(func)
 
         return function ()
             loops:remove("heartbeat", name)
