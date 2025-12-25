@@ -1,26 +1,38 @@
 
-do 
-	-- 
-	writefile("smallest_pixel.ttf", game:HttpGet("https://github.com/f1nobe7650/other/raw/main/ProggyClean.ttf"))
-	-- 
-	local smallest_pixel = {
-		name = "SmallestPixel7",
-		faces = {
-			{
-				name = "Regular",
-				weight = Weight,
-				style = Style,
-				assetId = getcustomasset("smallest_pixel.ttf")
-			}
-		}
-	}
+local library = {
+    directory = "aether.private",
+    folders = {
+        "/fonts"
+    }
+}
 
-	writefile("menu_font.font", game:GetService("HttpService"):JSONEncode(smallest_pixel))
+for _, path in next, library.folders do 
+    makefolder(library.directory .. path)
+end 
 
-	getgenv().menu_font = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
-end; 
+if not isfile(library.directory .. "/fonts/main.ttf") then 
+    writefile(library.directory .. "/fonts/main.ttf", game:HttpGet("https://github.com/f1nobe7650/Nebula/raw/refs/heads/main/fs-tahoma-8px.ttf"))
+end 
 
-local realfont = Font.new(getcustomasset("menu_font.font"), Enum.FontWeight.Light)
+local tahoma
+local realfont
+tahoma = {
+    name = "SmallestPixel7",
+    faces = {
+         {
+            name = "Regular",
+            weight = 400,
+            style = "normal",
+            assetId = getcustomasset(library.directory .. "/fonts/main.ttf")
+        }
+    }
+}
+    
+if not isfile(library.directory .. "/fonts/main_encoded.ttf") then 
+    writefile(library.directory .. "/fonts/main_encoded.ttf", game:GetService("HttpService"):JSONEncode(tahoma))
+end 
+
+realfont = Font.new(getcustomasset(library.directory .. "/fonts/main_encoded.ttf"), Enum.FontWeight.Regular)
 
 local userinputservice = game:GetService("UserInputService")
 local players = game:GetService("Players")
