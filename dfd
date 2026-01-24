@@ -1,0 +1,191 @@
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+-- Configuration / State
+local lp = Players.LocalPlayer
+local selfChams = {}
+local enabled = false
+local color = Color3.fromRGB(155, 125, 175)
+local transparency = 0
+local reflectance = 0
+local material = 'ForceField'
+local effect = 'none'
+local addEffect = 'none'
+local particleColor = Color3.fromRGB(255, 255, 255)
+local particleTransparency = 0
+local heatTime = 0
+
+-- Performance Caches
+local partCache = {} 
+local originalSettings = {}
+local heatConnection
+local charConnection
+
+local r15Names = {
+	'LeftFoot', 'LeftLowerLeg', 'LeftUpperLeg', 'RightFoot', 'RightLowerLeg', 'RightUpperLeg',
+	'LeftHand', 'LeftLowerArm', 'LeftUpperArm', 'RightHand', 'RightLowerArm', 'RightUpperArm',
+	'LowerTorso', 'UpperTorso', 'Head'
+}
+
+local heatMap = {
+	LeftFoot = 0.7, LeftLowerLeg = 0.3, LeftUpperLeg = 0.5,
+	RightFoot = 0.7, RightLowerLeg = 0.3, RightUpperLeg = 0.5,
+	LeftHand = 0.7, LeftLowerArm = 0.3, LeftUpperArm = 0.5,
+	RightHand = 0.7, RightLowerArm = 0.3, RightUpperArm = 0.5,
+	LowerTorso = 0.3, UpperTorso = 0.5, Head = 0.5,
+}
+
+-- 1. BUILD THE CACHE (The FPS Savior)
+local function buildCache(char)
+	partCache = {}
+	originalSettings = {clothing = {}}
+	if not char then return end
+
+	-- Cache Body Parts
+	for _, name in ipairs(r15Names) do
+		local p = char:FindFirstChild(name)
+		if p and p:IsA("BasePart") then
+			table.insert(partCache, {Instance = p, HeatKey = name})
+			originalSettings[p] = {
+				Material = p.Material, Color = p.Color,
+				Transparency = p.Transparency, Reflectance = p.Reflectance,
+				TextureID = p:IsA("MeshPart") and p.TextureID or nil
+			}
+		end
+	end
+
+	-- Cache Accessories (Hair/Hats)
+	for _, child in ipairs(char:GetChildren()) do
+		if child:IsA("Accessory") then
+			local h = child:FindFirstChild("Handle")
+			if h and h:IsA("BasePart") then
+				table.insert(partCache, {Instance = h, HeatKey = "Head"}) -- Hair follows Head pulse
+				originalSettings[h] = {
+					Material = h.Material, Color = h.Color,
+					Transparency = h.Transparency, Reflectance = h.Reflectance,
+					TextureID = h:IsA("MeshPart") and h.TextureID or nil
+				}
+			end
+		elseif child:IsA("Shirt") then originalSettings.clothing.Shirt = child.ShirtTemplate child:Destroy()
+		elseif child:IsA("Pants") then originalSettings.clothing.Pants = child.PantsTemplate child:Destroy()
+		end
+	end
+end
+
+-- 2. PARTICLE LOGIC (Rate reduced slightly for FPS)
+local function removeParticles()
+	for _, item in ipairs(partCache) do
+		local p = item.Instance
+		local s, sp = p:FindFirstChild('stars'), p:FindFirstChild('Specks')
+		if s then s:Destroy() end
+		if sp then sp:Destroy() end
+	end
+end
+
+local function applyStars()
+	removeParticles()
+	for _, item in ipairs(partCache) do
+		local p = item.Instance
+		if not heatMap[item.HeatKey] then continue end -- Only body parts get stars
+		local stars = Instance.new('ParticleEmitter')
+		stars.Name = 'stars'
+		stars.Lifetime = NumberRange.new(0.45, 0.9)
+		stars.Rate = 40 -- Optimized rate
+		stars.Texture = 'rbxassetid://1084996976'
+		stars.Color = ColorSequence.new(particleColor)
+		stars.Transparency = NumberSequence.new(particleTransparency)
+		stars.Parent = p
+	end
+end
+
+local function applySpecks()
+	removeParticles()
+	for _, item in ipairs(partCache) do
+		local p = item.Instance
+		local specks = Instance.new('ParticleEmitter')
+		specks.Name = 'Specks'
+		specks.Rate = 30
+		specks.Texture = 'rbxassetid://7216849703'
+		specks.Color = ColorSequence.new(particleColor)
+		specks.Parent = p
+	end
+end
+
+-- 3. APPLY LOGIC
+local function applyChams(heatPulse)
+	local targetMat = Enum.Material[material]
+	for _, item in ipairs(partCache) do
+		local p = item.Instance
+		p.Material = targetMat
+		p.Color = color
+		p.Reflectance = reflectance
+		if p:IsA("MeshPart") then p.TextureID = "" end
+		
+		if effect == "heat" then
+			local base = heatMap[item.HeatKey] or 0.5
+			p.Transparency = base + (0.2 * (heatPulse or 0))
+		else
+			p.Transparency = transparency
+		end
+	end
+end
+
+-- 4. THE LOOP
+local function startHeatLoop()
+	if heatConnection then heatConnection:Disconnect() end
+	heatTime = 0
+	heatConnection = RunService.Heartbeat:Connect(function(dt)
+		if not enabled or effect ~= "heat" then if heatConnection then heatConnection:Disconnect() end return end
+		heatTime = heatTime + dt
+		applyChams(math.sin(heatTime * 3) * 0.5 + 0.5)
+	end)
+end
+
+-- PUBLIC INTERFACE
+function selfChams:setEnabled(val)
+	enabled = val
+	local char = lp.Character
+	if enabled then
+		buildCache(char)
+		applyChams()
+		if effect == "heat" then startHeatLoop() end
+		selfChams:setAddEffect(addEffect)
+
+		charConnection = lp.CharacterAdded:Connect(function(nc)
+			nc:WaitForChild("Humanoid")
+			task.wait(1.2)
+			buildCache(nc)
+			applyChams()
+			if effect == "heat" then startHeatLoop() end
+			selfChams:setAddEffect(addEffect)
+		end)
+	else
+		if heatConnection then heatConnection:Disconnect() end
+		if charConnection then charConnection:Disconnect() end
+		removeParticles()
+		for part, data in pairs(originalSettings) do
+			if typeof(part) == "Instance" and part.Parent then
+				part.Material = data.Material
+				part.Color = data.Color
+				part.Transparency = data.Transparency
+				part.Reflectance = data.Reflectance
+				if part:IsA("MeshPart") then part.TextureID = data.TextureID end
+			end
+		end
+	end
+end
+
+function selfChams:setColor(c) color = c if enabled then applyChams() end end
+function selfChams:setTransparency(t) transparency = t if enabled then applyChams() end end
+function selfChams:setReflectance(r) reflectance = r if enabled then applyChams() end end
+function selfChams:setMaterial(m) material = m if enabled then applyChams() end end
+function selfChams:setEffect(e) effect = e if enabled then if e == "heat" then startHeatLoop() else applyChams() end end end
+function selfChams:setAddEffect(e)
+	addEffect = e
+	if enabled then
+		if e == 'stars' then applyStars() elseif e == 'particles' then applySpecks() else removeParticles() end
+	end
+end
+function selfChams:setParticleColor(c) particleColor = c selfChams:setAddEffect(addEffect) end
+
+return selfChams
